@@ -16,7 +16,7 @@ const mainScript = () => {
         copyNode.title = 'copy commit hash';
         copyNode.textContent = LABEL;
         copyNode.classList.add('___copy_hash');
-        hashNode.parentNode.appendChild(copyNode);
+        hashNode.insertAdjacentElement('afterend', copyNode);
         copyNode.addEventListener('click', async () => {
             await navigator.clipboard.writeText(hashText);
             copyNode.textContent = '✔️';
