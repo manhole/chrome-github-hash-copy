@@ -2,7 +2,8 @@ const mainScript = () => {
     const LABEL = '📋';
 
     // 'code' だけではハッシュ以外も該当してしまうので、notで絞る。
-    const hashes = document.querySelectorAll('code a:not(.markdown-title)');
+    // GitHub の autolinks 機能によるリンクを除外するため、hrefに /pull/ と /commits/ を持つ要素に絞る。
+    const hashes = document.querySelectorAll('code a:not(.markdown-title)[href*="/pull/"][href*="/commits/"]');
     console.log({hashes});
     hashes.forEach(hashNode => {
         const hashText = hashNode.textContent;
