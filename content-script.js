@@ -28,7 +28,8 @@ const mainScript = () => {
         const hashes = document.querySelectorAll('code a:not(.markdown-title)[href*="/pull/"][href*="/commits/"]');
         console.log(1, { hashes });
         hashes.forEach(hashNode => {
-            const hashText = hashNode.href.replace(/^.+\/commits\/(\w{8})\w{32}/, "$1");
+            const found = hashNode.href.match(/\/commits\/(\w{8})\w{32}/);
+            const hashText = found[1];
             createCopyNode(hashNode, hashText);
         });
     }
@@ -40,7 +41,8 @@ const mainScript = () => {
         const hashes = document.querySelectorAll('a:not(.markdown-title)[href*="/commit/"]');
         console.log(2, { hashes });
         hashes.forEach(hashNode => {
-            const hashText = hashNode.href.replace(/^.+\/commit\/(\w{8})\w{32}/, "$1");
+            const found = hashNode.href.match(/\/commit\/(\w{8})\w{32}/);
+            const hashText = found[1];
             createCopyNode(hashNode, hashText);
         });
     }
